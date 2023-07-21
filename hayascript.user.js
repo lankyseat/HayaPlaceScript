@@ -163,7 +163,7 @@ async function attemptPlace() {
       text: "Error retrieving map. Retrying in 30 secs...",
       duration: DEFAULT_TOAST_DURATION_MS,
     }).showToast();
-    setTimeout(attemptPlace, 10000); // probeer opnieuw in 10sec.
+    setTimeout(attemptPlace, 30000); // probeer opnieuw in 10sec.
     return;
   }
 
@@ -401,10 +401,6 @@ function getCanvasFromUrl(url, canvas, x = 0, y = 0, clearCanvas = false) {
         resolve(ctx);
       };
       img.onerror = () => {
-        Toastify({
-          text: "Erorr retrieving map, trying again...",
-          duration: 3000,
-        }).showToast();
         reject();
       };
 
