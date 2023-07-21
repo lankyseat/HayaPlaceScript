@@ -405,7 +405,7 @@ function getCanvasFromUrl(url, canvas, x = 0, y = 0, clearCanvas = false) {
           text: "Erorr retrieving map, trying again...",
           duration: 3000,
         }).showToast();
-        setTimeout(() => loadImage(ctx), 3000);
+        reject();
       };
 
       Toastify({
