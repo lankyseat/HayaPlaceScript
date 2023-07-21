@@ -94,6 +94,7 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
   currentPlaceCanvas = document.body.appendChild(currentPlaceCanvas);
   accessToken = await getAccessToken();
 
+  connectSocket();
   attemptPlace();
   setInterval(async () => {
     accessToken = await getAccessToken();
@@ -117,7 +118,6 @@ async function attemptPlace() {
     return;
   }
 
-  await connectSocket();
   // Timer check should happen before work is calculated
   try {
     const timer = await checkTimer();
