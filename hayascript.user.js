@@ -94,7 +94,6 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
   currentPlaceCanvas = document.body.appendChild(currentPlaceCanvas);
   accessToken = await getAccessToken();
 
-  connectSocket();
   attemptPlace();
   setInterval(async () => {
     accessToken = await getAccessToken();
@@ -112,6 +111,8 @@ async function connectSocket() {
 }
 
 async function attemptPlace() {
+  await connectSocket();
+
   // if we don't have the image data don't attempt place and try again in 2 seconds
   if (order === undefined) {
     setTimeout(attemptPlace, 2000); // probeer opnieuw in 2sec.
