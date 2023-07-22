@@ -158,12 +158,24 @@ async function attemptPlace() {
   // idk what this does
   // i think it somehow gets all the current canvas data and assigns it to ctx
   try {
-    ctx = await getCanvasFromUrl(await getCurrentImageUrl("2"), currentPlaceCanvas, 0, 0, false);
-    ctx = await getCanvasFromUrl(await getCurrentImageUrl("3"), currentPlaceCanvas, 1000, 0, false);
-    ctx = await getCanvasFromUrl(await getCurrentImageUrl("4"), currentPlaceCanvas, 2000, 0, false);
-    ctx = await getCanvasFromUrl(await getCurrentImageUrl("5"), currentPlaceCanvas, 0, 1000, false);
-    ctx = await getCanvasFromUrl(await getCurrentImageUrl("6"), currentPlaceCanvas, 1000, 1000, false);
-    ctx = await getCanvasFromUrl(await getCurrentImageUrl("7"), currentPlaceCanvas, 2000, 1000, false);
+    setTimeout(async () => {
+      ctx = await getCanvasFromUrl(await getCurrentImageUrl("2"), currentPlaceCanvas, 0, 0, false);
+    }, 1000);
+    setTimeout(async () => {
+      ctx = await getCanvasFromUrl(await getCurrentImageUrl("3"), currentPlaceCanvas, 1000, 0, false);
+    }, 1000);
+    setTimeout(async () => {
+      ctx = await getCanvasFromUrl(await getCurrentImageUrl("4"), currentPlaceCanvas, 2000, 0, false);
+    }, 1000);
+    setTimeout(async () => {
+      ctx = await getCanvasFromUrl(await getCurrentImageUrl("5"), currentPlaceCanvas, 0, 1000, false);
+    }, 1000);
+    setTimeout(async () => {
+      ctx = await getCanvasFromUrl(await getCurrentImageUrl("6"), currentPlaceCanvas, 1000, 1000, false);
+    }, 1000);
+    setTimeout(async () => {
+      ctx = await getCanvasFromUrl(await getCurrentImageUrl("7"), currentPlaceCanvas, 2000, 1000, false);
+    }, 1000);
   } catch (e) {
     console.warn("Error retrieving map: ", e);
     Toastify({
