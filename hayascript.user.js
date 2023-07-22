@@ -158,24 +158,28 @@ async function attemptPlace() {
   // idk what this does
   // i think it somehow gets all the current canvas data and assigns it to ctx
   try {
-    setTimeout(async () => {
-      ctx = await getCanvasFromUrl(await getCurrentImageUrl("2"), currentPlaceCanvas, 0, 0, false);
-    }, 1000);
-    setTimeout(async () => {
-      ctx = await getCanvasFromUrl(await getCurrentImageUrl("3"), currentPlaceCanvas, 1000, 0, false);
-    }, 1000);
-    setTimeout(async () => {
-      ctx = await getCanvasFromUrl(await getCurrentImageUrl("4"), currentPlaceCanvas, 2000, 0, false);
-    }, 1000);
-    setTimeout(async () => {
-      ctx = await getCanvasFromUrl(await getCurrentImageUrl("5"), currentPlaceCanvas, 0, 1000, false);
-    }, 1000);
-    setTimeout(async () => {
-      ctx = await getCanvasFromUrl(await getCurrentImageUrl("6"), currentPlaceCanvas, 1000, 1000, false);
-    }, 1000);
-    setTimeout(async () => {
-      ctx = await getCanvasFromUrl(await getCurrentImageUrl("7"), currentPlaceCanvas, 2000, 1000, false);
-    }, 1000);
+    let getctx = new Promise((resolve, reject) => {
+      setTimeout(async () => {
+        ctx = await getCanvasFromUrl(await getCurrentImageUrl("2"), currentPlaceCanvas, 0, 0, false);
+      }, 1000);
+      setTimeout(async () => {
+        ctx = await getCanvasFromUrl(await getCurrentImageUrl("3"), currentPlaceCanvas, 1000, 0, false);
+      }, 1000);
+      setTimeout(async () => {
+        ctx = await getCanvasFromUrl(await getCurrentImageUrl("4"), currentPlaceCanvas, 2000, 0, false);
+      }, 1000);
+      setTimeout(async () => {
+        ctx = await getCanvasFromUrl(await getCurrentImageUrl("5"), currentPlaceCanvas, 0, 1000, false);
+      }, 1000);
+      setTimeout(async () => {
+        ctx = await getCanvasFromUrl(await getCurrentImageUrl("6"), currentPlaceCanvas, 1000, 1000, false);
+      }, 1000);
+      setTimeout(async () => {
+        ctx = await getCanvasFromUrl(await getCurrentImageUrl("7"), currentPlaceCanvas, 2000, 1000, false);
+        resolve();
+      }, 1000);
+    });
+    await getctx();
   } catch (e) {
     console.warn("Error retrieving map: ", e);
     Toastify({
@@ -189,8 +193,8 @@ async function attemptPlace() {
   // pull the complete image data from 2000x2000
   // I think rgbaOrder is what WE want
   // and rgbaCanvas is the ACTUAL CURRENT canvas
-  const rgbaOrder = currentOrderCtx.getImageData(0, 0, 2000, 2000).data;
-  const rgbaCanvas = ctx.getImageData(0, 0, 2000, 2000).data;
+  const rgbaOrder = currentOrderCtx.getImageData(0, 0, 3000, 2000).data;
+  const rgbaCanvas = ctx.getImageData(0, 0, 3000, 2000).data;
 
   // now lets assume work is some array of everything we need to do
   const work = getPendingWork(order, rgbaOrder, rgbaCanvas);
@@ -208,7 +212,7 @@ async function attemptPlace() {
   const workRemaining = work.length;
   const idx = Math.floor(Math.random() * work.length);
   const i = work[idx];
-  const x = i % 2000;
+  const x = i % 3000;
   const y = Math.floor(i / 2000);
   const hex = rgbaOrderToHex(i, rgbaOrder);
 
