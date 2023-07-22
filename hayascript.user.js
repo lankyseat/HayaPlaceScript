@@ -157,8 +157,9 @@ async function attemptPlace() {
   // i think 0, 1, 2, and 3 are the differetn "quadrants" of the canvas
   // idk what this does
   // i think it somehow gets all the current canvas data and assigns it to ctx
-  try {
-    let getctx = new Promise((resolve, reject) => {
+
+  let getctx = new Promise((resolve, reject) => {
+    try {
       setTimeout(async () => {
         ctx = await getCanvasFromUrl(await getCurrentImageUrl("0"), currentPlaceCanvas, 0, 0, false);
 
@@ -183,17 +184,17 @@ async function attemptPlace() {
           }, 500);
         }, 500);
       }, 500);
-    });
-    await getctx();
-  } catch (e) {
-    console.warn("Error retrieving map: ", e);
-    Toastify({
-      text: "Error retrieving map. Retrying in 30 secs...",
-      duration: DEFAULT_TOAST_DURATION_MS,
-    }).showToast();
-    setTimeout(attemptPlace, 30000); // probeer opnieuw in 10sec.
-    return;
-  }
+    } catch (e) {
+      console.warn("Error retrieving map: ", e);
+      Toastify({
+        text: "Error retrieving map. Retrying in 30 secs...",
+        duration: DEFAULT_TOAST_DURATION_MS,
+      }).showToast();
+      setTimeout(attemptPlace, 30000); // probeer opnieuw in 10sec.
+      return;
+    }
+  });
+  await getctx();
 
   // pull the complete image data from 2000x2000
   // I think rgbaOrder is what WE want
