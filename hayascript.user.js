@@ -158,10 +158,12 @@ async function attemptPlace() {
   // idk what this does
   // i think it somehow gets all the current canvas data and assigns it to ctx
   try {
-    ctx = await getCanvasFromUrl(await getCurrentImageUrl("1"), currentPlaceCanvas, 0, 0, false);
-    ctx = await getCanvasFromUrl(await getCurrentImageUrl("2"), currentPlaceCanvas, 1000, 0, false);
-    ctx = await getCanvasFromUrl(await getCurrentImageUrl("4"), currentPlaceCanvas, 0, 1000, false);
-    ctx = await getCanvasFromUrl(await getCurrentImageUrl("5"), currentPlaceCanvas, 1000, 1000, false);
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl("2"), currentPlaceCanvas, 0, 0, false);
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl("3"), currentPlaceCanvas, 1000, 0, false);
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl("4"), currentPlaceCanvas, 2000, 0, false);
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl("5"), currentPlaceCanvas, 0, 1000, false);
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl("6"), currentPlaceCanvas, 1000, 1000, false);
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl("7"), currentPlaceCanvas, 2000, 1000, false);
   } catch (e) {
     console.warn("Error retrieving map: ", e);
     Toastify({
@@ -305,17 +307,23 @@ function place(x, y, color) {
 function getCanvas(x, y) {
   if (y <= 999) {
     if (x <= 999) {
-      return 1;
+      return 2;
     }
     if (x >= 999 && x <= 1999) {
-      return 2;
+      return 3;
+    }
+    if (x >= 1999 && x <= 2999) {
+      return 4;
     }
   } else {
     if (x <= 999) {
-      return 4;
+      return 5;
     }
     if (x >= 999 && x <= 1999) {
-      return 5;
+      return 6;
+    }
+    if (x >= 1999 && x <= 2999) {
+      return 7;
     }
   }
 }
