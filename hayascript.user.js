@@ -308,23 +308,23 @@ function place(x, y, color) {
 function getCanvas(x, y) {
   if (y <= 999) {
     if (x <= 999) {
-      return 2;
+      return 0;
     }
     if (x >= 999 && x <= 1999) {
-      return 3;
+      return 1;
     }
     if (x >= 1999 && x <= 2999) {
-      return 4;
+      return 2;
     }
   } else {
     if (x <= 999) {
-      return 5;
+      return 3;
     }
     if (x >= 999 && x <= 1999) {
-      return 6;
+      return 4;
     }
     if (x >= 1999 && x <= 2999) {
-      return 7;
+      return 5;
     }
   }
 }
