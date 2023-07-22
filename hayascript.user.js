@@ -209,47 +209,47 @@ async function attemptPlace() {
   // we have everything now
   // we know we can place, we know what needs to be done, now we must actually place the pixel
 
-  console.log("actual x/y")
-  console.log(x % 1000)
-  console.log(y % 1000)
+  console.log("actual x/y");
+  console.log(x % 1000);
+  console.log(y % 1000);
 
-//   try {
-//     const res = await place(x, y, COLOR_MAPPINGS[hex]);
-//     const data = await res.json();
-//     console.log(data);
+  //   try {
+  //     const res = await place(x, y, COLOR_MAPPINGS[hex]);
+  //     const data = await res.json();
+  //     console.log(data);
 
-//     if (data.errors) {
-//       const error = data.errors[0];
-//       const nextPixel = error.extensions.nextAvailablePixelTs + 3000;
-//       const nextPixelDate = new Date(nextPixel);
-//       const delay = nextPixelDate.getTime() - Date.now();
-//       const toast_duration = delay > 0 ? delay : DEFAULT_TOAST_DURATION_MS;
-//       Toastify({
-//         text: `Pixel placed too fast! Next pixel placed in ${nextPixelDate.toLocaleTimeString()}.`,
-//         duration: toast_duration,
-//       }).showToast();
-//       setTimeout(attemptPlace, delay);
-//     } else {
-//       const nextPixel =
-//         data.data.act.data[0].data.nextAvailablePixelTimestamp + 3000 + Math.floor(Math.random() * 4000);
-//       const nextPixelDate = new Date(nextPixel);
-//       const delay = nextPixelDate.getTime() - Date.now();
-//       const toast_duration = delay > 0 ? delay : DEFAULT_TOAST_DURATION_MS;
-//       Toastify({
-//         text: `Pixel placed on ${x}, ${y}! Next pixel placed in ${nextPixelDate.toLocaleTimeString()}.`,
-//         duration: toast_duration,
-//       }).showToast();
-//       setTimeout(attemptPlace, delay);
-//     }
-//   } catch (e) {
-//     console.warn("Error parsing response", e);
-//     Toastify({
-//       text: `Error parsing response: ${e}.`,
-//       duration: DEFAULT_TOAST_DURATION_MS * 12,
-//     }).showToast();
-//     setTimeout(attemptPlace, 10000);
-//   }
-// }
+  //     if (data.errors) {
+  //       const error = data.errors[0];
+  //       const nextPixel = error.extensions.nextAvailablePixelTs + 3000;
+  //       const nextPixelDate = new Date(nextPixel);
+  //       const delay = nextPixelDate.getTime() - Date.now();
+  //       const toast_duration = delay > 0 ? delay : DEFAULT_TOAST_DURATION_MS;
+  //       Toastify({
+  //         text: `Pixel placed too fast! Next pixel placed in ${nextPixelDate.toLocaleTimeString()}.`,
+  //         duration: toast_duration,
+  //       }).showToast();
+  //       setTimeout(attemptPlace, delay);
+  //     } else {
+  //       const nextPixel =
+  //         data.data.act.data[0].data.nextAvailablePixelTimestamp + 3000 + Math.floor(Math.random() * 4000);
+  //       const nextPixelDate = new Date(nextPixel);
+  //       const delay = nextPixelDate.getTime() - Date.now();
+  //       const toast_duration = delay > 0 ? delay : DEFAULT_TOAST_DURATION_MS;
+  //       Toastify({
+  //         text: `Pixel placed on ${x}, ${y}! Next pixel placed in ${nextPixelDate.toLocaleTimeString()}.`,
+  //         duration: toast_duration,
+  //       }).showToast();
+  //       setTimeout(attemptPlace, delay);
+  //     }
+  //   } catch (e) {
+  //     console.warn("Error parsing response", e);
+  //     Toastify({
+  //       text: `Error parsing response: ${e}.`,
+  //       duration: DEFAULT_TOAST_DURATION_MS * 12,
+  //     }).showToast();
+  //     setTimeout(attemptPlace, 10000);
+  //   }
+}
 
 function checkTimer() {
   return fetch("https://gql-realtime-2.reddit.com/query", {
