@@ -158,43 +158,22 @@ async function attemptPlace() {
   // idk what this does
   // i think it somehow gets all the current canvas data and assigns it to ctx
 
-  let getctx = new Promise((resolve, reject) => {
-    try {
-      setTimeout(async () => {
-        ctx = await getCanvasFromUrl(await getCurrentImageUrl("0"), currentPlaceCanvas, 0, 0, false);
-
-        setTimeout(async () => {
-          ctx = await getCanvasFromUrl(await getCurrentImageUrl("1"), currentPlaceCanvas, 1000, 0, false);
-
-          setTimeout(async () => {
-            ctx = await getCanvasFromUrl(await getCurrentImageUrl("2"), currentPlaceCanvas, 2000, 0, false);
-
-            setTimeout(async () => {
-              ctx = await getCanvasFromUrl(await getCurrentImageUrl("3"), currentPlaceCanvas, 0, 1000, false);
-
-              setTimeout(async () => {
-                ctx = await getCanvasFromUrl(await getCurrentImageUrl("4"), currentPlaceCanvas, 1000, 1000, false);
-
-                setTimeout(async () => {
-                  ctx = await getCanvasFromUrl(await getCurrentImageUrl("5"), currentPlaceCanvas, 2000, 1000, false);
-                  resolve(ctx);
-                }, 500);
-              }, 500);
-            }, 500);
-          }, 500);
-        }, 500);
-      }, 500);
-    } catch (e) {
-      console.warn("Error retrieving map: ", e);
-      Toastify({
-        text: "Error retrieving map. Retrying in 30 secs...",
-        duration: DEFAULT_TOAST_DURATION_MS,
-      }).showToast();
-      setTimeout(attemptPlace, 30000); // probeer opnieuw in 10sec.
-      return;
-    }
-  });
-  await getctx;
+  try {
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl("0"), currentPlaceCanvas, 0, 0, false);
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl("1"), currentPlaceCanvas, 1000, 0, false);
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl("2"), currentPlaceCanvas, 2000, 0, false);
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl("3"), currentPlaceCanvas, 0, 1000, false);
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl("4"), currentPlaceCanvas, 1000, 1000, false);
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl("5"), currentPlaceCanvas, 2000, 1000, false);
+  } catch (e) {
+    console.warn("Error retrieving map: ", e);
+    Toastify({
+      text: "Error retrieving map. Retrying in 30 secs...",
+      duration: DEFAULT_TOAST_DURATION_MS,
+    }).showToast();
+    setTimeout(attemptPlace, 30000); // probeer opnieuw in 10sec.
+    return;
+  }
 
   // pull the complete image data from 2000x2000
   // I think rgbaOrder is what WE want
