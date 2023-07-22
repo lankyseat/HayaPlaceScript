@@ -168,10 +168,10 @@ async function attemptPlace() {
   } catch (e) {
     console.warn("Error retrieving map: ", e);
     Toastify({
-      text: "Error retrieving map. Retrying in 30 secs...",
+      text: "Error retrieving map. Retrying in 5 secs...",
       duration: DEFAULT_TOAST_DURATION_MS,
     }).showToast();
-    setTimeout(attemptPlace, 30000); // probeer opnieuw in 10sec.
+    setTimeout(attemptPlace, 5000); // probeer opnieuw in 10sec.
     return;
   }
 
