@@ -196,6 +196,7 @@ async function attemptPlace() {
   const percentComplete = 100 - Math.ceil((work.length * 100) / order.length);
   const workRemaining = work.length;
   const idx = Math.floor(Math.random() * work.length);
+  console.log(work);
   const i = work[idx];
   const x = i % 3000;
   const y = Math.floor(i / 2000);
