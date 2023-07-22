@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hayasaka Bot
 // @namespace    https://github.com/ActuallyShip/Bot
-// @version      4
+// @version      5
 // @description  Hayasaka Bot
 // @author       lankyseat
 // @match        https://www.reddit.com/r/place/*
