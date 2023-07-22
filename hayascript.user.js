@@ -194,7 +194,7 @@ async function attemptPlace() {
       return;
     }
   });
-  await getctx();
+  await getctx;
 
   // pull the complete image data from 2000x2000
   // I think rgbaOrder is what WE want
