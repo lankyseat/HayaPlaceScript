@@ -160,22 +160,22 @@ async function attemptPlace() {
   try {
     let getctx = new Promise((resolve, reject) => {
       setTimeout(async () => {
-        ctx = await getCanvasFromUrl(await getCurrentImageUrl("2"), currentPlaceCanvas, 0, 0, false);
+        ctx = await getCanvasFromUrl(await getCurrentImageUrl("0"), currentPlaceCanvas, 0, 0, false);
 
         setTimeout(async () => {
-          ctx = await getCanvasFromUrl(await getCurrentImageUrl("3"), currentPlaceCanvas, 1000, 0, false);
+          ctx = await getCanvasFromUrl(await getCurrentImageUrl("1"), currentPlaceCanvas, 1000, 0, false);
 
           setTimeout(async () => {
-            ctx = await getCanvasFromUrl(await getCurrentImageUrl("4"), currentPlaceCanvas, 2000, 0, false);
+            ctx = await getCanvasFromUrl(await getCurrentImageUrl("2"), currentPlaceCanvas, 2000, 0, false);
 
             setTimeout(async () => {
-              ctx = await getCanvasFromUrl(await getCurrentImageUrl("5"), currentPlaceCanvas, 0, 1000, false);
+              ctx = await getCanvasFromUrl(await getCurrentImageUrl("3"), currentPlaceCanvas, 0, 1000, false);
 
               setTimeout(async () => {
-                ctx = await getCanvasFromUrl(await getCurrentImageUrl("6"), currentPlaceCanvas, 1000, 1000, false);
+                ctx = await getCanvasFromUrl(await getCurrentImageUrl("4"), currentPlaceCanvas, 1000, 1000, false);
 
                 setTimeout(async () => {
-                  ctx = await getCanvasFromUrl(await getCurrentImageUrl("7"), currentPlaceCanvas, 2000, 1000, false);
+                  ctx = await getCanvasFromUrl(await getCurrentImageUrl("5"), currentPlaceCanvas, 2000, 1000, false);
                   resolve();
                 }, 1000);
               }, 1000);
