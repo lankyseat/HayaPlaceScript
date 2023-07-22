@@ -159,12 +159,12 @@ async function attemptPlace() {
   // i think it somehow gets all the current canvas data and assigns it to ctx
 
   try {
-    ctx = await getCanvasFromUrl(await getCurrentImageUrl("0"), currentPlaceCanvas, 0, 0, false);
-    ctx = await getCanvasFromUrl(await getCurrentImageUrl("1"), currentPlaceCanvas, 1000, 0, false);
-    ctx = await getCanvasFromUrl(await getCurrentImageUrl("2"), currentPlaceCanvas, 2000, 0, false);
-    ctx = await getCanvasFromUrl(await getCurrentImageUrl("3"), currentPlaceCanvas, 0, 1000, false);
-    ctx = await getCanvasFromUrl(await getCurrentImageUrl("4"), currentPlaceCanvas, 1000, 1000, false);
-    ctx = await getCanvasFromUrl(await getCurrentImageUrl("5"), currentPlaceCanvas, 2000, 1000, false);
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl(0), currentPlaceCanvas, 0, 0, false);
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl(1), currentPlaceCanvas, 1000, 0, false);
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl(2), currentPlaceCanvas, 2000, 0, false);
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl(3), currentPlaceCanvas, 0, 1000, false);
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl(4), currentPlaceCanvas, 1000, 1000, false);
+    ctx = await getCanvasFromUrl(await getCurrentImageUrl(5), currentPlaceCanvas, 2000, 1000, false);
   } catch (e) {
     console.warn("Error retrieving map: ", e);
     Toastify({
@@ -354,7 +354,7 @@ async function getCurrentImageUrl(id = "0") {
 
       ws.send(
         JSON.stringify({
-          id: "2",
+          id: (id + 2).toString(),
           type: "start",
           payload: {
             variables: {
@@ -362,7 +362,7 @@ async function getCurrentImageUrl(id = "0") {
                 channel: {
                   teamOwner: "GARLICBREAD",
                   category: "CANVAS",
-                  tag: id,
+                  tag: id.toString(),
                 },
               },
             },
