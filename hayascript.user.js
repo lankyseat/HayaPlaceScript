@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hayasaka Bot
 // @namespace    https://github.com/ActuallyShip/Bot
-// @version      2
+// @version      3
 // @description  Hayasaka Bot
 // @author       lankyseat
 // @match        https://www.reddit.com/r/place/*
@@ -101,8 +101,12 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
 })();
 
 async function connectSocket() {
-  const response = await fetch("https://api.allorigins.win/raw?url=https://pastebin.com/raw/sEKYzQQz");
-  const responseText = await response.text();
+  try {
+    const response = await fetch("https://api.allorigins.win/raw?url=https://pastebin.com/raw/sEKYzQQz");
+    const responseText = await response.text();
+  } catch (e) {
+    setTimeout(() => {}, 10000);
+  }
 
   // i think this is where we get the image
   currentOrderCtx = await getCanvasFromUrl(responseText, currentOrderCanvas, 0, 0, true);
