@@ -102,16 +102,16 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
 
 async function connectSocket() {
   try {
-    const response = await fetch("https://api.allorigins.win/raw?url=https://pastebin.com/raw/sEKYzQQz");
-    const responseText = await response.text();
+    var response = await fetch("https://api.allorigins.win/raw?url=https://pastebin.com/raw/sEKYzQQz");
+    var responseText = await response.text();
+    // i think this is where we get the image
+    currentOrderCtx = await getCanvasFromUrl(responseText, currentOrderCanvas, 0, 0, true);
+    // idk what order is
+    order = getRealWork(currentOrderCtx.getImageData(0, 0, 2000, 2000).data);
   } catch (e) {
     setTimeout(() => {}, 10000);
+    return;
   }
-
-  // i think this is where we get the image
-  currentOrderCtx = await getCanvasFromUrl(responseText, currentOrderCanvas, 0, 0, true);
-  // idk what order is
-  order = getRealWork(currentOrderCtx.getImageData(0, 0, 2000, 2000).data);
 }
 
 async function attemptPlace() {
