@@ -405,6 +405,7 @@ function getCanvasFromUrl(url, canvas, x = 0, y = 0, clearCanvas = false) {
   return new Promise((resolve, reject) => {
     let loadImage = (ctx) => {
       var img = new Image();
+      img.crossOrigin = "anonymous";
       img.onload = () => {
         if (clearCanvas) {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
