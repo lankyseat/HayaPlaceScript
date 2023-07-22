@@ -177,12 +177,12 @@ async function attemptPlace() {
                 setTimeout(async () => {
                   ctx = await getCanvasFromUrl(await getCurrentImageUrl("5"), currentPlaceCanvas, 2000, 1000, false);
                   resolve(ctx);
-                }, 1000);
-              }, 1000);
-            }, 1000);
-          }, 1000);
-        }, 1000);
-      }, 1000);
+                }, 500);
+              }, 500);
+            }, 500);
+          }, 500);
+        }, 500);
+      }, 500);
     });
     await getctx();
   } catch (e) {
