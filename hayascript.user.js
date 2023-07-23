@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hayasaka Bot
 // @namespace    https://github.com/ActuallyShip/Bot
-// @version      5
+// @version      6
 // @description  Hayasaka Bot
 // @author       lankyseat
 // @match        https://www.reddit.com/r/place/*
@@ -10,8 +10,8 @@
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=reddit.com
 // @require	     https://cdn.jsdelivr.net/npm/toastify-js
 // @resource     TOASTIFY_CSS https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css
-// @updateURL    https://github.com/ActuallyShip/Place_Bot/raw/main/guyaplacebot.user.js
-// @downloadURL  https://github.com/ActuallyShip/Place_Bot/raw/main/guyaplacebot.user.js
+// @updateURL    https://github.com/lankyseat/HayaPlaceScript/raw/main~0/hayascript.user.js
+// @downloadURL  https://github.com/lankyseat/HayaPlaceScript/raw/main~0/hayascript.user.js
 // @grant        GM_getResourceText
 // @grant        GM_addStyle
 // ==/UserScript==
