@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hayasaka Bot
 // @namespace    https://github.com/ActuallyShip/Bot
-// @version      6
+// @version      7
 // @description  Hayasaka Bot
 // @author       lankyseat
 // @match        https://www.reddit.com/r/place/*
@@ -63,7 +63,7 @@ const COLOR_MAPPINGS = {
 
 let getRealWork = (rgbaOrder) => {
   let order = [];
-  for (var i = 0; i < 4000000; i++) {
+  for (var i = 0; i < 6000000; i++) {
     if (rgbaOrder[i * 4 + 3] !== 0) {
       order.push(i);
     }
@@ -84,11 +84,11 @@ let getPendingWork = (work, rgbaOrder, rgbaCanvas) => {
 
 (async function () {
   GM_addStyle(GM_getResourceText("TOASTIFY_CSS"));
-  currentOrderCanvas.width = 2000;
+  currentOrderCanvas.width = 3000;
   currentOrderCanvas.height = 2000;
   currentOrderCanvas.style.display = "none";
   currentOrderCanvas = document.body.appendChild(currentOrderCanvas);
-  currentPlaceCanvas.width = 2000;
+  currentPlaceCanvas.width = 3000;
   currentPlaceCanvas.height = 2000;
   currentPlaceCanvas.style.display = "none";
   currentPlaceCanvas = document.body.appendChild(currentPlaceCanvas);
@@ -107,7 +107,7 @@ async function connectSocket() {
     // i think this is where we get the image
     currentOrderCtx = await getCanvasFromUrl(responseText, currentOrderCanvas, 0, 0, true);
     // idk what order is
-    order = getRealWork(currentOrderCtx.getImageData(0, 0, 2000, 2000).data);
+    order = getRealWork(currentOrderCtx.getImageData(0, 0, 3000, 2000).data);
   } catch (e) {
     setTimeout(() => {}, 10000);
     return;
@@ -196,7 +196,6 @@ async function attemptPlace() {
   const percentComplete = 100 - Math.ceil((work.length * 100) / order.length);
   const workRemaining = work.length;
   const idx = Math.floor(Math.random() * work.length);
-  console.log(work);
   const i = work[idx];
   const x = i % 3000;
   const y = Math.floor(i / 3000);
@@ -209,11 +208,6 @@ async function attemptPlace() {
 
   // we have everything now
   // we know we can place, we know what needs to be done, now we must actually place the pixel
-
-  console.log("actual x/y");
-  console.log(x % 1000);
-  console.log(y % 1000);
-
   try {
     const res = await place(x, y, COLOR_MAPPINGS[hex]);
     const data = await res.json();
